@@ -18,34 +18,34 @@ Route::get('/', function () {
 });
 // Frontend
 
-Route::get('/','PageController@home')->name('homepage');
+// Route::get('/','PageController@home')->name('homepage');
 
-Route::get('detail/{id}','PageController@itemdetail')->name('itemdetailpage');
+// Route::get('detail/{id}','PageController@itemdetail')->name('itemdetailpage');
 
-Route::get('promotions','PageController@promotions')->name('promotionspage');
+// Route::get('promotions','PageController@promotions')->name('promotionspage');
 
-Route::get('itemsbybrand/{id}','PageController@itemsbybrand')->name('itemsbybrandpage');
+// Route::get('itemsbybrand/{id}','PageController@itemsbybrand')->name('itemsbybrandpage');
 
-Route::get('filteritems','PageController@filteritems')->name('filteritemspage');
+// Route::get('filteritems','PageController@filteritems')->name('filteritemspage');
 
-Route::get('shoppingcart','PageController@shoppingcart')->name('shoppingcartpage');
+// Route::get('shoppingcart','PageController@shoppingcart')->name('shoppingcartpage');
 
 // Route::get('login','PageController@login')->name('loginpage');
 
-Route::get('register','PageController@register')->name('registerpage');
+// Route::get('register','PageController@register')->name('registerpage');
 
-// Backend---------------------------
-Route::resource('orders','OrderController');
+// // Backend---------------------------
+// Route::resource('orders','OrderController');
 
-Route::middleware('role:Admin')->group(function () {
+// Route::middleware('role:Admin')->group(function () {
 
   Route::get('dashboard','BackendController@dashboardfun')->name('dashboardpage');
 
-  Route::resource('items','ItemController');
-  Route::resource('brands','BrandController');
-  Route::resource('categories','Categorytroller');
-  Route::resource('subcategories','SubcaregoryController');
-  // Route::resource('orders','OrderController');
+//   Route::resource('items','ItemController');
+//   Route::resource('brands','BrandController');
+//   Route::resource('categories','Categorytroller');
+//   Route::resource('subcategories','SubcaregoryController');
+//   // Route::resource('orders','OrderController');
 
   
-});
+// });
