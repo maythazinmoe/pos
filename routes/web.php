@@ -43,7 +43,7 @@ Route::get('/', function () {
 
 //   Route::resource('items','ItemController');
 //   Route::resource('brands','BrandController');
- Route::resource('categories','Categorytroller');
+ Route::resource('categories','CategoryController');
 //   Route::resource('subcategories','SubcaregoryController');
 //   // Route::resource('orders','OrderController');
 
