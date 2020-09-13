@@ -34,18 +34,21 @@ Route::get('/', function () {
 
 // Route::get('register','PageController@register')->name('registerpage');
 
-// // Backend---------------------------
+// Backend---------------------------
 // Route::resource('orders','OrderController');
 
 // Route::middleware('role:Admin')->group(function () {
 
   Route::get('dashboard','BackendController@dashboardfun')->name('dashboardpage');
-
-//   Route::resource('items','ItemController');
-//   Route::resource('brands','BrandController');
  Route::resource('categories','CategoryController');
-//   Route::resource('subcategories','SubcaregoryController');
-//   // Route::resource('orders','OrderController');
+
+
+  Route::resource('products','ProductController');
+  Route::resource('suppliers','SupplierController');
+  Route::resource('stocks','StockController');
+  Route::resource('sales','SaleController');
+  Route::resource('saledetail','SaledetailController');
+
 
   
 // });
