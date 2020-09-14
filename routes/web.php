@@ -37,11 +37,12 @@ Route::get('/', function () {
 // Backend---------------------------
 // Route::resource('orders','OrderController');
 
-Route::middleware('role:Admin')->group(function () {
+//Route::middleware('role:Admin')->group(function () {
 
   Route::get('dashboard','BackendController@dashboardfun')->name('dashboardpage');
   Route::resource('products','ProductController');
-});
+  Route::resource('categories','CategoryController');
+//});
 
 
 Auth::routes();
