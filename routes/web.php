@@ -37,18 +37,13 @@ Route::get('/', function () {
 // Backend---------------------------
 // Route::resource('orders','OrderController');
 
-// Route::middleware('role:Admin')->group(function () {
+Route::middleware('role:Admin')->group(function () {
 
   Route::get('dashboard','BackendController@dashboardfun')->name('dashboardpage');
- Route::resource('categories','CategoryController');
-
-
   Route::resource('products','ProductController');
-  Route::resource('suppliers','SupplierController');
-  Route::resource('stocks','StockController');
-  Route::resource('sales','SaleController');
-  Route::resource('saledetail','SaledetailController');
+});
 
 
-  
-// });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
