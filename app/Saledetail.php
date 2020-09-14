@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Saledetail extends Model
 {
     protected $fillable=[
-            'quantity'   
+            'quantity' 'product_id','sale_id'  
         ];}

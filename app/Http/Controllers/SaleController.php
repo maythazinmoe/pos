@@ -14,8 +14,9 @@ class SaleController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $sales=Sale::All();  
+         return view('backend.items.index',compact('sales'));
+          }
 
     /**
      * Show the form for creating a new resource.
@@ -35,8 +36,37 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+        // "codeno" => 'required|min:4',
+        "name" => 'required',
+        "price" => 'required',
+        "discount" => 'required',
+        "description" => 'required',
+        "photo" => 'required',
+        "brand" => 'required',
+        "subcategory" => 'required'
+    ]);
+
+    // If include file, upload file
+    $imageName = time().'.'.$request->photo->extension();
+
+    $request->photo->move(public_path('backend/itemimg'),$imageName);
+
+    $path = 'backend/itemimg/'.$imageName;
+    // Data insert
+    $sale = new Sale;
+    // $item->codeno = $request->codeno;
+    $item->name = $request->name;
+    $item->photo = $path;
+    $item->price = $request->price;
+    $item->discount = $request->discount;
+    $item->description = $request->description;
+    $item->brand_id = $request->brand;
+    $item->subcategory_id = $request->subcategory;
+    $item->save();
+
+    // redirect
+    return redirect()->route('items.index');    }
 
     /**
      * Display the specified resource.

@@ -47,7 +47,7 @@ Route::get('/', function () {
   Route::resource('suppliers','SupplierController');
   Route::resource('stocks','StockController');
   Route::resource('sales','SaleController');
-  Route::resource('saledetail','SaledetailController');
+  Route::resource('saledetails','SaledetailController');
 
 
   
