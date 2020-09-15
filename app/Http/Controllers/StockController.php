@@ -45,8 +45,8 @@ class StockController extends Controller
         // Validation
         $request->validate([
             'date' => 'required',
-            "supplier_id" => 'required',
-            "product_id" => 'required',
+            "supplier" => 'required',
+            "product" => 'required',
             "quantity" => 'required',
             "buy_price" => 'required',
             /*"status" => 'required'*/
@@ -56,8 +56,8 @@ class StockController extends Controller
         $stock = new Stock;
         // col name from database
         $stock->date = $request->date;
-        $stock->supplier_id = $request->supplier_id;
-        $stock->product_id= $request->product_id;
+        $stock->supplier_id = $request->supplier;
+        $stock->product_id= $request->product;
         $stock->quantity= $request->quantity;
         $stock->buy_price= $request->buy_price;
         $stock->status= 0;
