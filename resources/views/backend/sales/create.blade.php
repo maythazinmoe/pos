@@ -6,7 +6,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
     	<div class="row">
     		<div class="col">
-      		<h1 class="h3 mb-0 text-gray-800">Sale Edit Form</h1>
+      		<h1 class="h3 mb-0 text-gray-800">Sale Create Form</h1>
     		</div>
     	</div>
     </div>
@@ -20,32 +20,29 @@
 			       <div class="form-group row {{ $errors->has('date') ? 'has-error' : '' }}">
 			        <label for="inputName" class="col-sm-2 col-form-label">Date</label>
 			        <div class="col-sm-5">
-			          <input type="text" class="form-control" id="inputName" name="date">
+			          <input type="date" class="form-control" id="inputName" name="date">
 			          <span class="text-danger">{{ $errors->first('date') }}</span>
 			        </div>
 			      </div>
 			      <div class="form-group row {{ $errors->has('price') ? 'has-error' : '' }}">
-			        <label for="inputPrice" class="col-sm-2 col-form-label">Voucher No</label>
+			        <label for="inputPrice" class="col-sm-2 col-form-label">Quantity</label>
 			        <div class="col-sm-5">
-			          <input type="number" class="form-control" id="inputPrice" name="voucher" >
-			          <span class="text-danger">{{ $errors->first('voucher') }}</span>
+			          <input type="number" class="form-control" id="inputPrice" name="quantity" >
+			          <span class="text-danger">{{ $errors->first('quantity') }}</span>
 			        </div>
 			      </div>
-			      <div class="form-group row {{ $errors->has('total') ? 'has-error' : '' }}">
-			        <label for="inputPrice" class="col-sm-2 col-form-label">Total</label>
-			        <div class="col-sm-5">
-			          <input type="number" class="form-control" id="inputPrice" name="total" >
-			          <span class="text-danger">{{ $errors->first('total') }}</span>
-			        </div>
-			      </div>
-
 			      
 			    
 			      <div class="form-group row {{ $errors->has('status') ? 'has-error' : '' }}">
-			        <label for="inputDescription" class="col-sm-2 col-form-label">Status</label>
+			        <label for="inputDescription" class="col-sm-2 col-form-label">Products</label>
 			        <div class="col-sm-5">
-			          <textarea id="inputDescription" class="form-control" name="status"></textarea>
-			          <span class="text-danger">{{ $errors->first('status') }}</span>
+			          <select name="product" class="form-control">
+			          	<option selected disabled>Choose Product</option>
+			          	@foreach($products as $pro)
+			          	<option value="{{$pro->id}}">{{$pro->name}}</option>
+			          	@endforeach
+			          </select>
+			          <span class="text-danger">{{ $errors->first('product') }}</span>
 			        </div>
 			      </div>
 			      {{-- 
@@ -110,7 +107,7 @@
 						--}}
 			      <div class="form-group row">
 			        <div class="col-sm-5">
-			          <input type="submit" class="btn btn-primary" name="btnsubmit" value="Update">
+			          <input type="submit" class="btn btn-primary" value="Save">
 			        </div>
 			      </div>
 			    </form>

@@ -16,10 +16,9 @@
     			<thead class="thead-dark">
     				<tr>
     					<th>No</th>
-    					<th>Product_Name</th>
+    					<th>Date</th>
                         <th>Voucher_no</th>
     					<th>User</th>
-    					<th>Price</th>
     					<th>Total</th>
                         <th>Action</th>
     				</tr>
@@ -29,18 +28,17 @@
     				@foreach($sales as $sale)
     				<tr>
     					<td>{{$i++}}</td>
-    					<td>{{$sale->name}}</td>
-                        <td>{{$sale->voucher_no}}</td>
+    					<td>{{$sale->date}}</td>
+                        <td>{{$sale->voucher}}</td>
     					<td>{{$sale->user->name}}</td>
-                        <td>{{$sale->description}}</td>
-                        <td>{{$sale->name}}</td>
-    					<td>{{$sale->price}} MMK</td>
-                        <td>{{$sale->total}} MMK</td>
-
+    					<td>{{$sale->total}} MMK</td>
     					<td>
-    						<a href="#" class="btn btn-primary">Detail</a>
-    						<a href="{{route('sales.edit',$sale->id)}}" class="btn btn-warning">Edit</a>
-    						<a href="#" class="btn btn-danger">Delete</a>
+    						
+    						<form action="{{route('sales.destroy',$sale->id)}}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure want to Delete!')">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="Delete" class="btn btn-danger">              
+                            </form>
     					</td>
     				</tr>
     				@endforeach
