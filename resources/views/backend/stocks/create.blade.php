@@ -35,7 +35,7 @@
 			       <div class="form-group row {{ $errors->has('supplier') ? 'has-error' : '' }}">
 			        <label for="inputSupplier" class="col-sm-2 col-form-label">Supplier ID</label>
 			        <div class="col-sm-5">
-			          <select class="form-control form-control-md" id="inputSupplier" name="supplier_id">
+			          <select class="form-control form-control-md" id="inputSupplier" name="supplier">
 			            <optgroup label="Choose Supplier">
 			              @foreach($suppliers as $supplier)
 			                <option value="{{$supplier->id}}">{{$supplier->name}}</option>
@@ -49,7 +49,7 @@
 			       <div class="form-group row {{ $errors->has('product') ? 'has-error' : '' }}">
 			        <label for="inputProduct" class="col-sm-2 col-form-label">Product ID</label>
 			        <div class="col-sm-5">
-			          <select class="form-control form-control-md" id="inputProduct" name="product_id">
+			          <select class="form-control form-control-md" id="inputProduct" name="product">
 			            <optgroup label="Choose Product">
 			              @foreach($products as $product)
 			                <option value="{{$product->id}}">{{$product->name}}</option>
