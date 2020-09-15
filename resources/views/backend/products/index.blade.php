@@ -34,7 +34,7 @@
     					<td>{{$product->name}}</td>
                         <td>{{$product->category_id}}</td>
     					<td>{{$product->sale_price}} MMK</td>
-                        <td>{{$product->photo}}</td>
+                        <td><img src="{{asset($product->photo)}}"></td>
                         <td>{{$product->description}}</td>
     					<td>
     						
