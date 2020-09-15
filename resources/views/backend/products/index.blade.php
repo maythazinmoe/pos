@@ -18,7 +18,10 @@
     					<th>No</th>
     					{{-- <th>ID</th> --}}
     					<th>Name</th>
+                        <th>Category_ID</th>
     					<th>Sale Price</th>
+                        <th>Photo</th>
+                        <th>Description</th>
     					<th>Actions</th>
     				</tr>
     			</thead>
@@ -29,9 +32,12 @@
     					<td>{{$i++}}</td>
     					{{-- <td>{{$product->id}}</td> --}}
     					<td>{{$product->name}}</td>
+                        <td>{{$product->category_id}}</td>
     					<td>{{$product->sale_price}} MMK</td>
+                        <td>{{$product->photo}}</td>
+                        <td>{{$product->description}}</td>
     					<td>
-    						<a href="{{route('products.show',$product->id)}}" class="btn btn-outline-primary"><i class="fas fa-info"></i></a>
+    						
     						<a href="{{route('products.edit',$product->id)}}" class="btn btn-outline-warning"><i class="fas fa-edit"></i></a>
     						<!-- delete function ko write yin form ko use y a tal -->
                            <form action="{{route('products.destroy',$product->id)}}" method="POST" class="d-inline-block">
