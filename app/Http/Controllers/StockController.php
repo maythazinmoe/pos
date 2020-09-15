@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Stock;
+use App\Supplier;
+use App\Product;
 use Illuminate\Http\Request;
 
 class StockController extends Controller
@@ -14,7 +16,8 @@ class StockController extends Controller
      */
     public function index()
     {
-        //
+         $stocks = Stock::all();
+        return view('backend.stocks.index',compact('stocks'));
     }
 
     /**
@@ -24,7 +27,9 @@ class StockController extends Controller
      */
     public function create()
     {
-        //
+        $suppliers = Supplier::all();
+        $products = Product::all();
+        return view('backend.stocks.create',compact('suppliers','products'));
     }
 
     /**
@@ -35,7 +40,31 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         //dd ($request);
+
+        // Validation
+        $request->validate([
+            'date' => 'required',
+            "supplier_id" => 'required',
+            "product_id" => 'required',
+            "quantity" => 'required',
+            "buy_price" => 'required',
+            /*"status" => 'required'*/
+        ]);
+        
+        // Data insert
+        $stock = new Stock;
+        // col name from database
+        $stock->date = $request->date;
+        $stock->supplier_id = $request->supplier_id;
+        $stock->product_id= $request->product_id;
+        $stock->quantity= $request->quantity;
+        $stock->buy_price= $request->buy_price;
+        $stock->status= 0;
+        $stock->save();
+        
+        //redirect
+        return redirect()->route('stocks.index');
     }
 
     /**
@@ -57,7 +86,9 @@ class StockController extends Controller
      */
     public function edit(Stock $stock)
     {
-        //
+        $suppliers = Supplier::all();
+        $products = Product::all();
+        return view('backend.stocks.edit',compact('suppliers','products','stock'));
     }
 
     /**
@@ -69,7 +100,29 @@ class StockController extends Controller
      */
     public function update(Request $request, Stock $stock)
     {
-        //
+        //dd ($request);
+
+        // Validation
+        $request->validate([
+            'date' => 'required',
+            "supplier" => 'required',
+            "product" => 'required',
+            "quantity" => 'required',
+            "buy_price" => 'required',
+            /*"status" => 'required'*/
+        ]);
+        
+        // Data update
+        $stock->date = $request->date;
+        $stock->supplier_id = $request->supplier;
+        $stock->product_id= $request->product;
+        $stock->quantity= $request->quantity;
+        $stock->buy_price= $request->buy_price;
+        $stock->status= 0;
+        $stock->save();
+        
+        //redirect
+        return redirect()->route('stocks.index');
     }
 
     /**
@@ -80,6 +133,7 @@ class StockController extends Controller
      */
     public function destroy(Stock $stock)
     {
-        //
+        $stock->delete();
+        return redirect()->route('stocks.index');
     }
 }
