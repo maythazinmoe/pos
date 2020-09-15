@@ -25,7 +25,8 @@ class SaleController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('backend.sales.create');
     }
 
     /**
@@ -36,37 +37,43 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+         $request->validate([
         // "codeno" => 'required|min:4',
-        "name" => 'required',
-        "price" => 'required',
-        "discount" => 'required',
-        "description" => 'required',
-        "photo" => 'required',
-        "brand" => 'required',
-        "subcategory" => 'required'
+        "date" => 'required',
+        "voucher" => 'required',
+        "total"=>'required',
+        // "discount" => 'required',
+        "status" => 'required',
+        "user" => 'required',
+        // "brand" => 'required',
+        // "subcategory" => 'required'
     ]);
 
     // If include file, upload file
-    $imageName = time().'.'.$request->photo->extension();
+    // $imageName = time().'.'.$request->photo->extension();
 
-    $request->photo->move(public_path('backend/itemimg'),$imageName);
+    // $request->photo->move(public_path('backend/itemimg'),$imageName);
 
-    $path = 'backend/itemimg/'.$imageName;
+    // $path = 'backend/itemimg/'.$imageName;
     // Data insert
     $sale = new Sale;
     // $item->codeno = $request->codeno;
-    $item->name = $request->name;
-    $item->photo = $path;
-    $item->price = $request->price;
-    $item->discount = $request->discount;
-    $item->description = $request->description;
-    $item->brand_id = $request->brand;
-    $item->subcategory_id = $request->subcategory;
-    $item->save();
+      $sale->date = $request->date;
+    $sale->voucher = $request->voucher;
+    $sale->total = $request->total;
+    // $sale->discount=$request->required,
+
+    // $sale->photo = $path;
+
+    // $sale->discount = $request->discount;
+    $sale->status = $request->status;
+    $sale->user = $request->name;
+    // $sale->subcategory_id = $request->subcategory;
+    $sale->save();
 
     // redirect
-    return redirect()->route('items.index');    }
+    return redirect()->route('sales.index');
+        }
 
     /**
      * Display the specified resource.
@@ -76,8 +83,8 @@ class SaleController extends Controller
      */
     public function show(Sale $sale)
     {
-        //
-    }
+        return view('backend.sales.create');
+            }
 
     /**
      * Show the form for editing the specified resource.
@@ -87,7 +94,9 @@ class SaleController extends Controller
      */
     public function edit(Sale $sale)
     {
-        //
+        // $brands = Brand::all();
+        // $subcategories = Subcategory::all();
+        return view('backend.sales.edit',compact('sales'));    
     }
 
     /**
@@ -99,8 +108,50 @@ class SaleController extends Controller
      */
     public function update(Request $request, Sale $sale)
     {
-        //
-    }
+         $request->validate([
+        // "codeno" => 'required|min:4',
+        "date" => 'required',
+        "voucher" => 'required',
+        "total"=>'required',
+        "user" => 'Auth::id()',
+        "status" => 'required',
+        // "photo" => 'sometimes',
+        // "brand" => 'required',
+        // "subcategory" => 'required'
+    ]);
+
+        // file upload, if data
+        // if ($request->hasFile('photo')) {
+        //    $imageName = time().'.'.$request->photo->extension();
+
+        //     $request->photo->move(public_path('backend/itemimg'),$imageName);
+
+        //     $path = 'backend/itemimg/'.$imageName; 
+        // }else{
+        //     $path = $request->oldphoto;
+        // }
+
+        // data update
+        // $sale = new Sale;
+    // $item->codeno = $request->codeno;
+    $sale->date = $request->date;
+    $sale->voucher = $request->voucher;
+    $sale->total = $request->total;
+    // $sale->discount=$request->required,
+
+    // $sale->photo = $path;
+
+    // $sale->discount = $request->discount;
+    $sale->status = $request->status;
+    $sale->user = $request->users->name;
+
+    // $sale->brand_id = $request->brand;
+    // $sale->subcategory_id = $request->subcategory;
+    $sale->save();
+
+    // redirect
+    return redirect()->route('sales.index');
+}
 
     /**
      * Remove the specified resource from storage.

@@ -17,45 +17,55 @@
       		<form action="{{route('sales.store')}}" method="post" enctype="multipart/form-data">
 			      @csrf
 			      
-			       <div class="form-group row {{ $errors->has('date') ? 'has-error' : '' }}">
-			        <label for="inputName" class="col-sm-2 col-form-label">Date</label>
+			       <div class="form-group row {{ $errors->has('name') ? 'has-error' : '' }}">
+			        <label for="inputName" class="col-sm-2 col-form-label">Product Name</label>
 			        <div class="col-sm-5">
-			          <input type="text" class="form-control" id="inputName" name="date">
-			          <span class="text-danger">{{ $errors->first('date') }}</span>
+			          <input type="text" class="form-control" id="inputName" name="name">
+			          <span class="text-danger">{{ $errors->first('name') }}</span>
 			        </div>
 			      </div>
 			      <div class="form-group row {{ $errors->has('price') ? 'has-error' : '' }}">
-			        <label for="inputPrice" class="col-sm-2 col-form-label">Voucher No</label>
+			        <label for="inputPrice" class="col-sm-2 col-form-label">Price</label>
 			        <div class="col-sm-5">
-			          <input type="number" class="form-control" id="inputPrice" name="voucher" >
-			          <span class="text-danger">{{ $errors->first('voucher') }}</span>
+			          <input type="number" class="form-control" id="inputPrice" name="price" >
+			          <span class="text-danger">{{ $errors->first('price') }}</span>
 			        </div>
 			      </div>
 			      <div class="form-group row {{ $errors->has('total') ? 'has-error' : '' }}">
 			        <label for="inputPrice" class="col-sm-2 col-form-label">Total</label>
 			        <div class="col-sm-5">
-			          <input type="number" class="form-control" id="inputPrice" name="total" >
+			          <input type="number" class="form-control" id="inputPrice" name="price" >
 			          <span class="text-danger">{{ $errors->first('total') }}</span>
 			        </div>
 			      </div>
-
-			      
-			    
-			      <div class="form-group row {{ $errors->has('status') ? 'has-error' : '' }}">
-			        <label for="inputDescription" class="col-sm-2 col-form-label">Status</label>
+			      <div class="form-group row {{ $errors->has('photo') ? 'has-error' : '' }}">
+			        <label for="inputPhoto" class="col-sm-2 col-form-label">Photo</label>
 			        <div class="col-sm-5">
-			          <textarea id="inputDescription" class="form-control" name="status"></textarea>
-			          <span class="text-danger">{{ $errors->first('status') }}</span>
+			          <input type="file" id="inputPhoto" name="photo" class="d-block">
+			          <span class="text-danger">{{ $errors->first('photo') }}</span>
+
+			          <img src="" class="img-fluid w-25">
+
+			          <input type="hidden" name="oldphoto" >
+
 			        </div>
 			      </div>
-			      {{-- 
-			       <div class="form-group row {{ $errors->has('user') ? 'has-error' : '' }}">
-			        <label for="inputDescription" class="col-sm-2 col-form-label">User_Id</label>
+			      
+			      {{-- <div class="form-group row {{ $errors->has('discount') ? 'has-error' : '' }}">
+			        <label for="inputDiscount" class="col-sm-2 col-form-label">Discount</label>
 			        <div class="col-sm-5">
-			          <textarea id="inputDescription" class="form-control" name="user"></textarea>
-			          <span class="text-danger">{{ $errors->first('user') }}</span>
+			          <input type="number" class="form-control" id="inputDiscount" name="discount" value="{{$item->discount}}">
+			          <span class="text-danger">{{ $errors->first('discount') }}</span>
 			        </div>
 			      </div> --}}
+			      <div class="form-group row {{ $errors->has('description') ? 'has-error' : '' }}">
+			        <label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
+			        <div class="col-sm-5">
+			          <textarea id="inputDescription" class="form-control" name="description"></textarea>
+			          <span class="text-danger">{{ $errors->first('description') }}</span>
+			        </div>
+			      </div>
+			      
 			     {{--  <div class="form-group row {{ $errors->has('brand') ? 'has-error' : '' }}">
 			        <label for="inputBrand" class="col-sm-2 col-form-label">Brand</label>
 			        <div class="col-sm-5">
