@@ -42,6 +42,7 @@ Route::get('/', function () {
   Route::get('dashboard','BackendController@dashboardfun')->name('dashboardpage');
   Route::resource('products','ProductController');
   Route::resource('categories','CategoryController');
+  Route::resource('suppliers','SupplierController');
 //});
 
 
