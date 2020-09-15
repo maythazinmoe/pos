@@ -38,16 +38,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        // Validation
          $request->validate([
             'name' => 'required',
         ]);
         
         // Data insert
-
         $category = new Category;
         $category->name = $request->name;
-       
         $category->save();
+
+        //redirect
         return redirect()->route('categories.index');
     }
 
@@ -70,7 +71,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        
         return view('backend.categories.edit',compact('category'));
 
     }
