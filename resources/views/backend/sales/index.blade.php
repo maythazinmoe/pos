@@ -33,11 +33,13 @@
     					<td>{{$sale->user->name}}</td>
     					<td>{{$sale->total}} MMK</td>
     					<td>
+
+                            <a href="{{route('sales.show',$sale->id)}}" class="btn btn-outline-warning"><i class="fas fa-detail"></i>Details</a>
     						
     						<form action="{{route('sales.destroy',$sale->id)}}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure want to Delete!')">
                                 @csrf
                                 @method('DELETE')
-                                <input type="submit" value="Delete" class="btn btn-danger">              
+                                <input type="submit" value="Delete" class="btn btn-outline-danger">              
                             </form>
     					</td>
     				</tr>

@@ -13,6 +13,17 @@ class Sale extends Model
 public function user()
 {
 	return $this->belongsTo('App\User');
+
+}
+
+public function sales()
+{
+	return $this->hasMany('App\Sale');
+
+}
+public function saledetails($value='')
+{
+	return $this->hasMany('App\Saledetail');
 }
  
 

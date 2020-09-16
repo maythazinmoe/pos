@@ -16,8 +16,10 @@ class SaleController extends Controller
      */
     public function index()
     {
-        $sales=Sale::All();  
+        $sales=Sale::All();
+         // $products = Product::all();  
          return view('backend.sales.index',compact('sales'));
+
           }
 
     /**
@@ -96,7 +98,11 @@ class SaleController extends Controller
      */
     public function show(Sale $sale)
     {
-        return view('backend.sales.create');
+        // $sales = Sale::all();
+        // return view('backend.sales.create');
+        return view('backend.sales.show',compact('sale'));
+
+        
             }
 
     /**

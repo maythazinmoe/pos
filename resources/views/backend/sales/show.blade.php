@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-md-12 mb-3">
         <h1 class="h3 mb-0 text-gray-800">Voucherno : {{$sale->voucherno}}</h1>
-        <h1 class="h3 mb-0 text-gray-800">Orderdate : {{$sale->date}}</h1>
+        <h1 class="h3 mb-0 text-gray-800">Date : {{$sale->date}}</h1>
       </div>
     </div>
     
@@ -17,34 +17,34 @@
             <tr>
               <th>No</th>
               <th>Date</th>
-              <th>Voucher No</th>
+              <th>VoucherNo</th>
+              <th>User</th>
+              <th>Quantity</th>
               <th>Total</th>
-              <th>Status</th>
             </tr>
           </thead>
           <tbody>
             @php $i=1; $total=0; @endphp
-            @foreach($sales as $sale)
-            @php 
-              $subtotal = $product->price * $product->pivot->total;
+            
+            {{-- @php 
+              $subtotal = $sale->price * $item->pivot->qty;
               $total += $subtotal;
-            @endphp
+            @endphp --}}
             <tr>
               <td>{{$i++}}</td>
               <td>{{$sale->date}}</td>
-              <td>{{$sale->voucherno}}</td>
-              <td>{{$sale->total}}</td>
-              <td>{{$sale->status}}</td>
-              <td>{{$sale->pivot->total}}</td>
+              <td>{{$sale->voucher}}</td>
+              <td>{{$sale->user->name}}</td>
+              <td>{{$sale->saledetails[0]->quantity}}</td>
               <td>
-                {{$subtotal}}
+                {{$sale->total}}
               </td>
             </tr>
-            @endforeach
+            {{-- @endforeach --}}
 
             <tr class="bg-dark text-white">
-              <td colspan="4">Total:</td>
-              <td>{{$total}} MMK</td>
+              <td colspan="5">Total:</td>
+              <td>{{$sale->total}} MMK</td>
             </tr>
           </tbody>
         </table>
