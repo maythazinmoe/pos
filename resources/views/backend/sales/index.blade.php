@@ -29,15 +29,15 @@
     				<tr>
     					<td>{{$i++}}</td>
     					<td>{{$sale->date}}</td>
-                        <td>{{$sale->voucher}}</td>
+                        <td>{{$sale->voucher_no}}</td>
     					<td>{{$sale->user->name}}</td>
     					<td>{{$sale->total}} MMK</td>
     					<td>
-    						
+    						{{-- <a href="{{route('sales.edit',$product->id)}}" class="btn btn-outline-warning"><i class="fas fa-edit"></i></a> --}}
     						<form action="{{route('sales.destroy',$sale->id)}}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure want to Delete!')">
                                 @csrf
                                 @method('DELETE')
-                                <input type="submit" value="Delete" class="btn btn-danger">              
+                                <button class="btn btn-outline-danger "><i class="fas fa-trash"></i></button>            
                             </form>
     					</td>
     				</tr>

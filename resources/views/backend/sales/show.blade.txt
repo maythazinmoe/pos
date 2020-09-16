@@ -32,7 +32,7 @@
             <tr>
               <td>{{$i++}}</td>
               <td>{{$sale->date}}</td>
-              <td>{{$sale->voucherno}}</td>
+              <td>{{$sale->voucher_no}}</td>
               <td>{{$sale->total}}</td>
               <td>{{$sale->status}}</td>
               <td>{{$sale->pivot->total}}</td>

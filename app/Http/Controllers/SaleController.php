@@ -66,7 +66,7 @@ class SaleController extends Controller
     $sale = new Sale;
     // $item->codeno = $request->codeno;
       $sale->date = $request->date;
-    $sale->voucher = uniqid();
+    $sale->voucher_no = uniqid();
     $sale->total = $total;
     $sale->status = 0;
     // $sale->discount=$request->required,
