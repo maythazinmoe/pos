@@ -45,6 +45,7 @@
 
 			        </div>
 			      </div>
+			      
 			      <div class="form-group row {{ $errors->has('sale_price') ? 'has-error' : '' }}">
 			        <label for="inputSalePrice" class="col-sm-2 col-form-label">Price</label>
 			        <div class="col-sm-5">

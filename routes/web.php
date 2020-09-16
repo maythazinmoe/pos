@@ -42,25 +42,23 @@ Route::get('/', function () {
   Route::get('dashboard','BackendController@dashboardfun')->name('dashboardpage');
  Route::resource('categories','CategoryController');
 
-Route::middleware('role:Admin')->group(function () {
+//Route::middleware('role:Admin')->group(function () {
 
   Route::get('dashboard','BackendController@dashboardfun')->name('dashboardpage');
   Route::resource('products','ProductController');
   Route::resource('categories','CategoryController');
   Route::resource('suppliers','SupplierController');
+  Route::resource('stocks','StockController');
+  Route::resource('staffs','StaffController');
 //});
 // >>>>>>> 4cc8d6b9a6b75427a20ad916285647a4ae333941
 
-
-  Route::resource('products','ProductController');
-  Route::resource('suppliers','SupplierController');
-  Route::resource('stocks','StockController');
+ 
   Route::resource('sales','SaleController');
   Route::resource('saledetails','SaledetailController');
+ 
+//});
 
-
-  
-});
 Auth::routes();
 
 Route::get('loginform','PageController@login')->name('loginpage');

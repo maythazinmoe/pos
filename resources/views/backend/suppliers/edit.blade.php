@@ -50,9 +50,9 @@
 			      </div>
 
 			      <div class="form-group row {{ $errors->has('phone') ? 'has-error' : '' }}">
-			        <label for="inputEmail" class="col-sm-2 col-form-label">Phone</label>
+			        <label for="inputPhone" class="col-sm-2 col-form-label">Phone</label>
 			        <div class="col-sm-5">
-			          <input type="text" class="form-control" id="inputEmail" name="phone" value="{{$supplier->phone}}">
+			          <input type="text" class="form-control" id="inputPhone" name="phone" value="{{$supplier->phone}}">
 			          <span class="text-danger">{{ $errors->first('phone') }}</span>
 			        </div>
 			      </div>

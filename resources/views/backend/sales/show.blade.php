@@ -33,9 +33,16 @@
             <tr>
               <td>{{$i++}}</td>
               <td>{{$sale->date}}</td>
+<<<<<<< HEAD:resources/views/backend/sales/show.blade.php
               <td>{{$sale->voucher}}</td>
               <td>{{$sale->user->name}}</td>
               <td>{{$sale->saledetails[0]->quantity}}</td>
+=======
+              <td>{{$sale->voucher_no}}</td>
+              <td>{{$sale->total}}</td>
+              <td>{{$sale->status}}</td>
+              <td>{{$sale->pivot->total}}</td>
+>>>>>>> 49176af9eb7af4322695e44e972b6b5d65cdd211:resources/views/backend/sales/show.blade.txt
               <td>
                 {{$sale->total}}
               </td>

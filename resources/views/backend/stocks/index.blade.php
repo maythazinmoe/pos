@@ -5,8 +5,8 @@
     <!-- Page Heading -->
   	<div class="row">
   		<div class="col-md-12 mb-3">
-    		<h1 class="h3 mb-0 text-gray-800 d-inline-block">Product List</h1>
-    		<a href="{{route('products.create')}}" class="btn btn-info float-right">Add New</a>
+    		<h1 class="h3 mb-0 text-gray-800 d-inline-block">Stock List</h1>
+    		<a href="{{route('stocks.create')}}" class="btn btn-info float-right">Add New</a>
   		</div>
   	</div>
     
@@ -17,30 +17,32 @@
     				<tr>
     					<th>No</th>
     					{{-- <th>ID</th> --}}
-    					<th>Name</th>
-                        <th>Category ID</th>
-    					<th>Sale Price</th>
-                        <th>Photo</th>
-                        <th>Description</th>
+    					<th>Date</th>
+                        <th>Supplier ID</th>
+                        <th>Product ID</th>
+                        <th>Quantity</th>
+    					<th>Buy Price</th>
+                        {{-- <th>Status</th> --}}
     					<th>Actions</th>
     				</tr>
     			</thead>
     			<tbody>
     				@php $i=1; @endphp
-    				@foreach($products as $product)
+    				@foreach($stocks as $stock)
     				<tr>
     					<td>{{$i++}}</td>
     					{{-- <td>{{$product->id}}</td> --}}
-    					<td>{{$product->name}}</td>
-                        <td>{{$product->category_id}}</td>
-    					<td>{{$product->sale_price}} MMK</td>
-                        <td><img src="{{asset($product->photo)}}"></td>
-                        <td>{{$product->description}}</td>
+    					<td>{{$stock->date}}</td>
+                        <td>{{$stock->supplier_id}}</td>
+                        <td>{{$stock->product_id}}</td>
+                        <td>{{$stock->quantity}}</td>
+    					<td>{{$stock->buy_price}} MMK</td>
+                        {{-- <td>{{$stock->status}}</td> --}}
     					<td>
     						
-    						<a href="{{route('products.edit',$product->id)}}" class="btn btn-outline-warning"><i class="fas fa-edit"></i></a>
+    						<a href="{{route('stocks.edit',$stock->id)}}" class="btn btn-outline-warning"><i class="fas fa-edit"></i></a>
     						<!-- delete function ko write yin form ko use y a tal -->
-                           <form action="{{route('products.destroy',$product->id)}}" method="POST" class="d-inline-block">
+                           <form action="{{route('stocks.destroy',$stock->id)}}" method="POST" class="d-inline-block">
                                 @csrf
                                 @method('DELETE')
                                 <!-- delete lote yin method ka post nat ma ya buu dar kout method ko delete so pe change pay ya mal update lo myoe pot -->
