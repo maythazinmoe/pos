@@ -25,7 +25,7 @@ class CreateStocksTable extends Migration
 
               $table->foreign('supplier_id')
                     ->references('id')
-                    ->on('supliers')
+                    ->on('suppliers')
                     ->onDelete('cascade');
 
                       $table->foreign('product_id')
