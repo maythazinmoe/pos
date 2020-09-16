@@ -53,12 +53,6 @@ class SaleController extends Controller
         // "subcategory" => 'required'
     ]);
 
-    // If include file, upload file
-    // $imageName = time().'.'.$request->photo->extension();
-
-    // $request->photo->move(public_path('backend/itemimg'),$imageName);
-
-    // $path = 'backend/itemimg/'.$imageName;
     $qty = $request->quantity;
     $productid = $request->product;
     $p = Product::where('id',$productid)->get();
