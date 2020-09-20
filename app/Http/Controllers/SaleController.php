@@ -41,47 +41,32 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
-         $request->validate([
-        // "codeno" => 'required|min:4',
-        "date" => 'required',
-        "quantity" => 'required',
-        "product"=>'required',
-        // "discount" => 'required',
-        // "user" => 'required',
-        // "brand" => 'required',
-        // "subcategory" => 'required'
-    ]);
+        $products = $request->shop_data;
+        
+        $total = 0;
+        foreach ($products as $product) {
+           $total+=($product['qty']*$product['sale_price']);
+        }
 
-    $qty = $request->quantity;
-    $productid = $request->product;
-    $p = Product::where('id',$productid)->get();
+        $sale = new Sale;
+        $sale->date = date('Y-m-d');
+        $sale->voucher = uniqid();
+        $sale->total = $total;
+        $sale->status = 0;
+        $sale->user_id = Auth::id();
+        $sale->save();
 
-    $total = ($p[0]->sale_price)*$qty;
-    // Data insert
-    $sale = new Sale;
-    // $item->codeno = $request->codeno;
-      $sale->date = $request->date;
-    $sale->voucher_no = uniqid();
-    $sale->total = $total;
-    $sale->status = 0;
-    // $sale->discount=$request->required,
+        foreach ($products as $value) {
+            $sale->products()->attach($value['id'],['quantity'=>$value['qty']]);
+        }
 
-    // $sale->photo = $path;
+        return 'Successful!';
 
-    // $sale->discount = $request->discount;
-    $sale->user_id = Auth::id();
-    // $sale->subcategory_id = $request->subcategory;
-    $sale->save();
+    
+    
+    
 
-    $saledetail = new Saledetail;
-    $saledetail->quantity = $qty;
-    $saledetail->product_id = $productid;
-    $saledetail->sale_id = $sale->id;
-    $saledetail->save();
 
-    // redirect
-    return redirect()->route('sales.index');
         }
 
     /**
@@ -92,7 +77,7 @@ class SaleController extends Controller
      */
     public function show(Sale $sale)
     {
-        // $sales = Sale::all();
+        $sales = Sale::all();
         // return view('backend.sales.create');
         return view('backend.sales.show',compact('sale'));
 

@@ -43,7 +43,7 @@
 			      <div class="form-group row {{ $errors->has('sale_price') ? 'has-error' : '' }}">
 			        <label for="inputSalePrice" class="col-sm-2 col-form-label">Sale Price</label>
 			        <div class="col-sm-5">
-			          <input type="number" class="form-control" id="inputSalePrice" name="sale_price">
+			          <input type="number" class="form-control" id="inputSalePrice">
 			          <span class="text-danger">{{ $errors->first('sale_price') }}</span>
 			        </div>
 			      </div>
@@ -59,7 +59,7 @@
 			      <div class="form-group row {{ $errors->has('category') ? 'has-error' : '' }}">
 			        <label for="inputCategory" class="col-sm-2 col-form-label">Category</label>
 			        <div class="col-sm-5">
-			          <select class="form-control form-control-md" id="inputCategory" name="category">
+			          <select class="form-control form-control-md" id="inputCategory" name="name">
 			            <optgroup label="Choose Category">
 			              @foreach($categories as $category)
 			                <option value="{{$category->id}}">{{$category->name}}</option>

@@ -41,6 +41,7 @@ Route::get('/', function () {
 
   Route::get('dashboard','BackendController@dashboardfun')->name('dashboardpage');
  Route::resource('categories','CategoryController');
+ //Route::post('salessearch','SaleController@sales');
 
 //Route::middleware('role:Admin')->group(function () {
 
@@ -51,11 +52,11 @@ Route::get('/', function () {
   Route::resource('stocks','StockController');
   Route::resource('staffs','StaffController');
 //});
-// >>>>>>> 4cc8d6b9a6b75427a20ad916285647a4ae333941
+
 
  
   Route::resource('sales','SaleController');
-  Route::resource('saledetails','SaledetailController');
+  //Route::resource('saledetails','SaledetailController');
  
 //});
 
