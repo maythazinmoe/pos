@@ -3,12 +3,14 @@
 @section('content')
   <div class="container-fluid">
     <!-- Page Heading -->
-    {{-- <div class="row">
+    <div class="row">
       <div class="col-md-12 mb-3">
-        <h1 class="h3 mb-0 text-gray-800">Voucherno : {{$sale->voucherno}}</h1>
-        <h1 class="h3 mb-0 text-gray-800">Date : {{$sale->date}}</h1>
+        <h4 class="h3 mb-0 text-gray-800">Voucherno : {{$sale->voucher}}</h4>
+        <h4 class="h3 mb-0 text-gray-800">Date : {{$sale->date}}</h4>
+        <h4 class="h3 mb-0 text-gray-800">User : {{$sale->user->name}}</h4>
+
       </div>
-    </div> --}}
+    </div>
     
     <div class="row">
       <div class="col-md-12">
@@ -16,42 +18,42 @@
           <thead class="thead-dark">
             <tr>
               <th>No</th>
-              <th>Date</th>
-              <th>VoucherNo</th>
-              <th>User</th>
+              <th>Photo</th>
               <th>Product Name</th>
-              <th>Description</th>
+              <th>Category</th>
               <th>Price</th>
-              <th>Quantity</th>
-              <th>Total</th>
+              <th>Qty</th>
+              <th>Subtotal</th>
+              
             </tr>
           </thead>
           <tbody>
-            @php $i=1; $total=0; @endphp
+            @php $i=1; $total=0; $subtotal=0; @endphp
             
-            @php 
-              $subtotal = $sale->price * $sale->pivot->quantity;
-              $total += $subtotal;
+            @foreach($sale->products as $sale_product)
+            @php
+              $subtotal= $sale_product->pivot->quantity*$sale_product->sale_price;
+              $total+=$subtotal;
             @endphp
             <tr>
               <td>{{$i++}}</td>
-              <td>{{$sale->date}}</td>
-              <td>{{$sale->voucher}}</td>
-              <td>{{$sale->user->name}}</td>
-              <td>{{$sale->description}}</td>
-              <td>{{$sale->sale_price}}</td>
+              <td><img src="{{asset($sale_product->photo)}}" width="120px" height="100px"></td>
+              <td>{{$sale_product->name}}</td>
+              <td>{{$sale_product->category->name}}</td>
+              <td>{{$sale_product->sale_price}}</td>
+              <td>{{$sale_product->pivot->quantity}}</td>
+              <td>{{$subtotal}}</td>
+
+
+             
               {{-- <td>{{$sale->qty}}</td> --}}
-             @foreach($sale->products as $detail)
-              <td>{{$detail->pivot->quantity}}</td>
-              @endforeach
-              <td>
-                {{$sale->total}}
-              </td>
+             
             </tr>
+            @endforeach
             {{-- @endforeach --}}
 
             <tr class="bg-dark text-white">
-              <td colspan="5">Total:</td>
+              <td colspan="6">Total:</td>
               <td>{{$sale->total}} MMK</td>
             </tr>
           </tbody>
