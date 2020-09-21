@@ -71,7 +71,7 @@
 			      <div class="form-group row {{ $errors->has('buy_price') ? 'has-error' : '' }}">
 			        <label for="inputBuyPrice" class="col-sm-2 col-form-label">Buy Price</label>
 			        <div class="col-sm-5">
-			          <input type="number" class="form-control" id="inputBuyPrice" name="buy_price">
+			          <input type="text" class="form-control" id="inputBuyPrice" name="buy_price">
 			          <span class="text-danger">{{ $errors->first('buy_price') }}</span>
 			        </div>
 			      </div>
