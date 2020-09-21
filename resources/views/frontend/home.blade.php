@@ -10,21 +10,21 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{{ asset('frontend/image/carousel1.jpg')}}" class="d-block w-100" height="500">
+      <img src="{{ asset('frontend/image/carousel1.jpg')}}" class="d-block w-100" height="700">
       <div class="carousel-caption d-none d-md-block">
          <h1 style="color: green;font-size: 50px; padding-bottom:  250px;font-family: cursive; padding-right: 400px;">Give your freezer a break,buy fresh everyday!</h1>
         {{--  <button type="button" class="btn btn-success" style="margin-bottom: 170px;">SHOP NOW</button> --}}
       </div>
     </div>
     <div class="carousel-item">
-      <img src="{{ asset('frontend/image/carousel2.jpg')}}" class="d-block w-100" height="500">
+      <img src="{{ asset('frontend/image/carousel2.jpg')}}" class="d-block w-100" height="700">
       <div class="carousel-caption d-none d-md-block">
         <h5>Second slide label</h5>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="{{ asset('frontend/image/carousel3.jpg')}}" class="d-block w-100" height="500">
+      <img src="{{ asset('frontend/image/carousel3.jpg')}}" class="d-block w-100" height="700">
       <div class="carousel-caption d-none d-md-block">
         
       </div>

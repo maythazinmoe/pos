@@ -40,7 +40,7 @@
     						
     						<a href="{{route('suppliers.edit',$supplier->id)}}" class="btn btn-outline-warning"><i class="fas fa-edit"></i></a>
     						<!-- delete function ko write yin form ko use y a tal -->
-                           <form action="{{route('suppliers.destroy',$supplier->id)}}" method="POST" class="d-inline-block">
+                           <form action="{{route('suppliers.destroy',$supplier->id)}}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure want to Delete!')">
                                 @csrf
                                 @method('DELETE')
                                 <!-- delete lote yin method ka post nat ma ya buu dar kout method ko delete so pe change pay ya mal update lo myoe pot -->

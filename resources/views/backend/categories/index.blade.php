@@ -29,7 +29,7 @@
                         <td>
                             <a href="{{route('categories.edit',$category->id)}}" class="btn btn-outline-warning"><i class="fas fa-edit"></i></a>
 
-                            <form action="{{route('categories.destroy',$category->id)}}" method="POST" class="d-inline-block">
+                            <form action="{{route('categories.destroy',$category->id)}}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure want to Delete!')">
                                 @csrf
                                 @method('DELETE')
                                 <!-- delete lote yin method ka post nat ma ya buu dar kout method ko delete so pe change pay ya mal update lo myoe pot -->

@@ -6,9 +6,11 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="csrf-token" content="{{csrf_token()}}">
+
 
   <title>Sale and Inventory Management System</title>
 
@@ -39,7 +41,6 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
-
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
         <a class="nav-link" href="{{route('dashboardpage')}}">
@@ -48,13 +49,14 @@
       </li>
 
       <!-- Divider -->
+      @role('Admin')
+
       <hr class="sidebar-divider">
 
       <!-- Heading -->
       <div class="sidebar-heading">
         Process
       </div>
-      @role('Admin')
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('staffs.index')}}">
@@ -92,6 +94,7 @@
       </li>
       @endrole
 
+
       <!-- Divider -->
       <hr class="sidebar-divider">
 
@@ -108,12 +111,7 @@
         </a>       
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-          <i class="fas fa-fw fa-folder-open"></i>
-          <span>Sale Detail</span>
-        </a>       
-      </li>
+      
 
       {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('')}}">
@@ -224,7 +222,7 @@
                 <span class="badge badge-danger badge-counter">3+</span>
               </a>
               <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+{{--               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
                   Alerts Center
                 </h6>
@@ -263,7 +261,7 @@
                 </a>
                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
               </div>
-            </li>
+            </li> --}}
 
             <!-- Nav Item - Messages -->
             <li class="nav-item dropdown no-arrow mx-1">
@@ -326,23 +324,14 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
+                @if(Auth::user()->staff)
+                <img class="img-profile rounded-circle" src="{{asset(Auth::user()->staff->photo)}}">
+                @endif
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
+                
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -394,7 +383,7 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">Are you sure to logout from this page</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
           <a class="btn btn-primary" href="{{route('logout')}}" onclick="event.preventDefault();
@@ -423,7 +412,8 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('backend/js/demo/chart-area-demo.js')}}"></script>
   <script src="{{ asset('backend/js/demo/chart-pie-demo.js')}}"></script>
-
+  <script type="text/javascript" src="{{asset('backend/js/localcustom.js')}}"></script>
+  @yield('script')
 </body>
 
 </html>

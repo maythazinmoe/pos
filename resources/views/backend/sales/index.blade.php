@@ -33,11 +33,20 @@
     					<td>{{$sale->user->name}}</td>
     					<td>{{$sale->total}} MMK</td>
     					<td>
-    						{{-- <a href="{{route('sales.edit',$product->id)}}" class="btn btn-outline-warning"><i class="fas fa-edit"></i></a> --}}
+
+
+                            <a href="{{route('sales.show',$sale->id)}}" class="btn btn-outline-warning"><i class="fas fa-edit"></i></a>
+    						
+    						{{-- <form action="{{route('sales.destroy',$sale->id)}}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure want to Delete!')">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="Delete" class="btn btn-outline-danger"> --}}
+    						
     						<form action="{{route('sales.destroy',$sale->id)}}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure want to Delete!')">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-outline-danger "><i class="fas fa-trash"></i></button>            
+
                             </form>
     					</td>
     				</tr>

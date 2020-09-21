@@ -47,7 +47,7 @@ class LoginController extends Controller
                 return redirect('dashboard');
                 break;
             case "Staff":
-                return redirect('/');
+                return redirect('/dashboard');
                 break;
         }
     }

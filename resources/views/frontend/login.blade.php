@@ -2,11 +2,11 @@
 
 @section('content')
   <!-- Subcategory Title -->
-  <div class="jumbotron jumbotron-fluid subtitle">
+ {{--  <div class="jumbotron jumbotron-fluid subtitle">
       <div class="container">
         <h1 class="text-center text-white"> Login </h1>
       </div>
-  </div>
+  </div> --}}
   
   <!-- Content -->
   <div class="container my-5">
@@ -57,7 +57,7 @@
           </form>
 
           <div class=" mt-3 text-center ">
-            <a href="{{route('registerpage')}}" class="loginLink text-decoration-none">Need an account? Sign Up!</a>
+            <a href="{{route('register')}}" class="loginLink text-decoration-none">Need an account? Sign Up!</a>
           </div>
       </div>
     </div>

@@ -32,7 +32,7 @@
     					<td>{{$i++}}</td>
     					{{-- <td>{{$product->id}}</td> --}}
     					<td>{{$product->name}}</td>
-                        <td>{{$product->category_id}}</td>
+                        <td>{{$product->category->name}}</td>
     					<td>{{$product->sale_price}} MMK</td>
                         <td><img src="{{asset($product->photo)}}"></td>
                         <td>{{$product->description}}</td>
@@ -40,7 +40,7 @@
     						
     						<a href="{{route('products.edit',$product->id)}}" class="btn btn-outline-warning"><i class="fas fa-edit"></i></a>
     						<!-- delete function ko write yin form ko use y a tal -->
-                           <form action="{{route('products.destroy',$product->id)}}" method="POST" class="d-inline-block">
+                           <form action="{{route('products.destroy',$product->id)}}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure want to Delete!')">
                                 @csrf
                                 @method('DELETE')
                                 <!-- delete lote yin method ka post nat ma ya buu dar kout method ko delete so pe change pay ya mal update lo myoe pot -->

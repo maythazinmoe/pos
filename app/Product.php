@@ -13,4 +13,9 @@ class Product extends Model
             // 'id','name','photo','price','description','category_id'  
 
         ];
+
+     public function category($value='')
+     {
+     	return $this->belongsTo('App\Category');
+     }
 }
