@@ -13,12 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 // Frontend
 
-// Route::get('/','PageController@home')->name('homepage');
+ Route::get('/','PageController@home')->name('homepage');
+ Route::get('/about','PageController@about')->name('aboutpage');
+ Route::get('/contact','PageController@contact')->name('contactpage');
+
+ Route::get('loginpage','PageController@login')->name('loginpage');
 
 // Route::get('detail/{id}','PageController@itemdetail')->name('itemdetailpage');
 
@@ -40,17 +44,17 @@ Route::get('/', function () {
 // Route::middleware('role:Admin')->group(function () {
 
   Route::get('dashboard','BackendController@dashboardfun')->name('dashboardpage');
- Route::resource('categories','CategoryController');
+ //Route::resource('categories','CategoryController');
 
-//Route::middleware('role:Admin')->group(function () {
+Route::middleware('role:Admin')->group(function () {
 
-  Route::get('dashboard','BackendController@dashboardfun')->name('dashboardpage');
+  //Route::get('dashboard','BackendController@dashboardfun')->name('dashboardpage');
   Route::resource('products','ProductController');
   Route::resource('categories','CategoryController');
   Route::resource('suppliers','SupplierController');
   Route::resource('stocks','StockController');
   Route::resource('staffs','StaffController');
-//});
+});
 // >>>>>>> 4cc8d6b9a6b75427a20ad916285647a4ae333941
 
  

@@ -24,7 +24,7 @@
 			          <select class="form-control form-control-md" id="inputUser" name="user">
 			            <optgroup label="Choose User">
 			              @foreach($users as $user)
-			                <option value="{{$user->id}}">{{$user->name}}</option>
+			                <option value="{{$user->name}}">{{$user->name}}</option>
 			              @endforeach 
 			            </optgroup>
 			          </select>

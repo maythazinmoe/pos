@@ -17,7 +17,7 @@
     				<tr>
     					<th>No</th>
     					{{-- <th>ID</th> --}}
-    					<th>User ID</th>
+    					<th>User</th>
                         <th>Address</th>
     					<th>Phone</th>
                         <th>Photo</th>
